@@ -1,6 +1,6 @@
 name: tab_news_api
-description: A new Flutter package project.
-version: 0.0.1
+description: A repository that manages the data layer and make call to TabNews Api.
+version: 1.0.0
 homepage:
 
 environment:

@@ -597,6 +597,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  tab_news_api:
+    dependency: "direct main"
+    description:
+      path: "packages/tab_news_api"
+      relative: true
+    source: path
+    version: "1.0.0"
   term_glyph:
     dependency: transitive
     description:
