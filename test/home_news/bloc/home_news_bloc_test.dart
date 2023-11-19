@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:tab_newz/home_news/bloc/home_news_bloc.dart';
+import 'package:tab_newz/features/home_news/bloc/home_news_bloc.dart';
 
 void main() {
   group("[Home News Bloc Group Test] - ", () {

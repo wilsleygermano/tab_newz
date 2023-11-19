@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tab_newz/home_news/bloc/home_news_bloc.dart';
-import 'package:tab_newz/home_news/widget/news_list.dart';
+import 'package:tab_newz/features/home_news/bloc/home_news_bloc.dart';
+import 'package:tab_newz/features/home_news/widget/news_list.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

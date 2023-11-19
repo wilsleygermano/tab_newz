@@ -4,9 +4,9 @@ import 'package:svg_flutter/svg_flutter.dart';
 import 'package:tab_newz/constants/app_assets.dart';
 import 'package:tab_newz/constants/app_strings.dart';
 import 'package:tab_newz/core/tools/time_formatter.dart';
-import 'package:tab_newz/home_news/bloc/home_news_bloc.dart';
-import 'package:tab_newz/home_news/widget/icon_badge.dart';
-import 'package:tab_newz/home_news/widget/news_title.dart';
+import 'package:tab_newz/features/home_news/bloc/home_news_bloc.dart';
+import 'package:tab_newz/features/home_news/widget/icon_badge.dart';
+import 'package:tab_newz/features/home_news/widget/news_title.dart';
 
 class NewsList extends StatefulWidget {
   const NewsList({super.key});
