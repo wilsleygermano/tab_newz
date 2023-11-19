@@ -7,8 +7,19 @@ class AppTheme {
       brightness: Brightness.light,
       seedColor: AppColors.primaryLight,
     ),
+    primaryColorDark: AppColors.primaryDark,
+    primaryColorLight: AppColors.primaryLight,
+    scaffoldBackgroundColor: AppColors.primaryLight,
+    appBarTheme: const AppBarTheme(
+      color: AppColors.primaryLight,
+      titleTextStyle: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w900,
+        color: AppColors.primaryDark,
+      ),
+    ),
     visualDensity: VisualDensity.adaptivePlatformDensity,
-    fontFamily: 'Montserrat',
+    fontFamily: 'Inter',
     useMaterial3: true,
     textTheme: const TextTheme(
       displayLarge: TextStyle(
@@ -49,8 +60,19 @@ class AppTheme {
       brightness: Brightness.dark,
       seedColor: AppColors.primaryDark,
     ),
+    scaffoldBackgroundColor: AppColors.primaryDark,
+    appBarTheme: const AppBarTheme(
+      color: AppColors.primaryDark,
+      titleTextStyle: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w900,
+        color: AppColors.primaryLight,
+      ),
+    ),
+    primaryColorDark: AppColors.primaryDark,
+    primaryColorLight: AppColors.primaryLight,
     visualDensity: VisualDensity.adaptivePlatformDensity,
-    fontFamily: 'Montserrat',
+    fontFamily: 'Inter',
     useMaterial3: true,
     textTheme: const TextTheme(
       displayLarge: TextStyle(

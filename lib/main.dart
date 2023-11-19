@@ -1,4 +1,7 @@
+
+
 import 'package:flutter/material.dart';
+import 'package:tab_newz/home_news/view/home_page.dart';
 import 'package:tab_newz/theme/app_theme.dart';
 
 void main() {
@@ -14,11 +17,7 @@ class MainApp extends StatelessWidget {
       theme: AppTheme().light,
       darkTheme: AppTheme().dark,
       themeMode: ThemeMode.system,
-      home: const Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+      home: HomePage()
     );
   }
 }
