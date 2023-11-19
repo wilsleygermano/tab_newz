@@ -7,6 +7,14 @@ class AppTheme {
       brightness: Brightness.light,
       seedColor: AppColors.primaryLight,
     ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      enableFeedback: true,
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      backgroundColor: AppColors.primaryLight,
+      selectedItemColor: AppColors.primaryDark,
+      unselectedItemColor: AppColors.primaryDark.withOpacity(0.5),
+    ),
     primaryColorDark: AppColors.primaryDark,
     primaryColorLight: AppColors.primaryLight,
     scaffoldBackgroundColor: AppColors.primaryLight,
@@ -59,6 +67,14 @@ class AppTheme {
     colorScheme: ColorScheme.fromSeed(
       brightness: Brightness.dark,
       seedColor: AppColors.primaryDark,
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: AppColors.primaryDark,
+      selectedItemColor: AppColors.primaryLight,
+      unselectedItemColor: AppColors.primaryLight.withOpacity(0.5),
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      enableFeedback: true,
     ),
     scaffoldBackgroundColor: AppColors.primaryDark,
     appBarTheme: const AppBarTheme(

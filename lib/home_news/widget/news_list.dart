@@ -174,8 +174,11 @@ class _NewsListState extends State<NewsList> {
                                           const SizedBox(
                                             height: 6,
                                           ),
-                                          NewsTitle(
-                                            title: news.title,
+                                          Hero(
+                                            tag: AppStrings.titleTag,
+                                            child: NewsTitle(
+                                              title: news.title,
+                                            ),
                                           ),
                                           const SizedBox(
                                             height: 6,

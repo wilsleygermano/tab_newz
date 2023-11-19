@@ -39,4 +39,19 @@ final class HomeNewsBlocState extends Equatable {
 
   @override
   List<Object> get props => [status, news, hasReachedMax, errorMessage, page, numberOfNews];
+
+  @override
+  bool get stringify => true;
+
+  @override
+  String toString() {
+    return '''HomeNewsBlocState {
+      status: $status,
+      news: ${news.length},
+      hasReachedMax: $hasReachedMax,
+      errorMessage: $errorMessage,
+      page: $page,
+      numberOfNews: $numberOfNews,
+    }''';
+  }
 }
