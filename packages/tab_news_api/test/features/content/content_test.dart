@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
+import 'package:tab_news_api/features/content/content.dart';
 import 'package:tab_news_api/tab_news_api.dart';
 
 class MockHttpClient extends Mock implements http.Client {}
@@ -14,7 +15,7 @@ class FakeUri extends Fake implements Uri {}
 void main() {
   group("[TabNews Api group test]", () {
     late http.Client httpClient;
-    late TabNewsAPiClient apiClient;
+    late Content content;
     late List<Map<String, dynamic>> dummyResponse;
 
     setUpAll(() {
@@ -23,7 +24,7 @@ void main() {
 
     setUp(() {
       httpClient = MockHttpClient();
-      apiClient = TabNewsAPiClient(httpClient: httpClient);
+      content = Content(httpClient: httpClient);
       dummyResponse = [
         {
           "id": "54bc6582-dcbd-4711-bee8-7be0d90380cf",
@@ -49,8 +50,8 @@ void main() {
     group("Client Constructor Test: ", () {
       test("Should return a TabNewsClientApi", () {
         // assert
-        expect(apiClient, isA<TabNewsAPiClient>());
-        expect(apiClient, isNotNull);
+        expect(content, isA<Content>());
+        expect(content, isNotNull);
       });
     });
 
@@ -60,7 +61,7 @@ void main() {
         when(() => response.statusCode).thenReturn(200);
         when(() => response.body).thenReturn(jsonEncode(dummyResponse));
         when(() => httpClient.get(any())).thenAnswer((_) async => response);
-        final result = await apiClient.getNews();
+        final result = await content.getNews();
         expect(result, isA<List<NewsModel>>());
       });
 
@@ -68,7 +69,7 @@ void main() {
         final response = MockResponse();
         when(() => response.statusCode).thenReturn(400);
         when(() => httpClient.get(any())).thenAnswer((_) async => response);
-        expect(() => apiClient.getNews(), throwsA(isA<NewsRequestFailure>()));
+        expect(() => content.getNews(), throwsA(isA<NewsRequestFailure>()));
       });
 
       test("Throw an Error if api response does not contain data", () async {
@@ -76,7 +77,7 @@ void main() {
         when(() => response.statusCode).thenReturn(200);
         when(() => response.body).thenReturn(jsonEncode([]));
         when(() => httpClient.get(any())).thenAnswer((_) async => response);
-        expect(() => apiClient.getNews(), throwsA(isA<NewsNotFoundFailure>()));
+        expect(() => content.getNews(), throwsA(isA<NewsNotFoundFailure>()));
       });
     });
 
@@ -87,7 +88,7 @@ void main() {
         when(() => response.body).thenReturn(jsonEncode(dummyResponse[0]));
         when(() => httpClient.get(any())).thenAnswer((_) async => response);
         final result =
-            await apiClient.getSelectedNews(ownerName: "", newsSlug: "");
+            await content.getSelectedNews(ownerName: "", newsSlug: "");
         expect(result, isA<NewsModel>());
       });
 
@@ -97,16 +98,16 @@ void main() {
         final response = MockResponse();
         when(() => response.statusCode).thenReturn(400);
         when(() => httpClient.get(any())).thenAnswer((_) async => response);
-        expect(() => apiClient.getSelectedNews(ownerName: "", newsSlug: ""),
+        expect(() => content.getSelectedNews(ownerName: "", newsSlug: ""),
             throwsA(isA<SelectedNewsRequestFailure>()));
       });
 
-      test("Should Thow an error if the news is empty", () async {
+      test("Should Throw an error if the news is empty", () async {
         final response = MockResponse();
         when(() => response.statusCode).thenReturn(200);
         when(() => response.body).thenReturn(jsonEncode({}));
         when(() => httpClient.get(any())).thenAnswer((_) async => response);
-        expect(() => apiClient.getSelectedNews(ownerName: "", newsSlug: ""),
+        expect(() => content.getSelectedNews(ownerName: "", newsSlug: ""),
             throwsA(isA<SelectedNewsNotFoundFailure>()));
       });
     });
@@ -117,7 +118,7 @@ void main() {
         when(() => response.statusCode).thenReturn(200);
         when(() => response.body).thenReturn(jsonEncode(dummyResponse));
         when(() => httpClient.get(any())).thenAnswer((_) async => response);
-        final result = await apiClient.getComments(
+        final result = await content.getComments(
           ownerName: "",
           newsSlug: "",
         );
@@ -130,16 +131,16 @@ void main() {
         final response = MockResponse();
         when(() => response.statusCode).thenReturn(400);
         when(() => httpClient.get(any())).thenAnswer((_) async => response);
-        expect(() => apiClient.getComments(ownerName: "", newsSlug: ""),
+        expect(() => content.getComments(ownerName: "", newsSlug: ""),
             throwsA(isA<SelectedNewsCommentsRequestFailure>()));
       });
 
-      test("Should Thow an error if the news comments is empty", () async {
+      test("Should Throw an error if the news comments is empty", () async {
         final response = MockResponse();
         when(() => response.statusCode).thenReturn(200);
         when(() => response.body).thenReturn(jsonEncode([]));
         when(() => httpClient.get(any())).thenAnswer((_) async => response);
-        expect(() => apiClient.getComments(ownerName: "", newsSlug: ""),
+        expect(() => content.getComments(ownerName: "", newsSlug: ""),
             throwsA(isA<SelectedNewsCommentsNotFoundFailure>()));
       });
     });
