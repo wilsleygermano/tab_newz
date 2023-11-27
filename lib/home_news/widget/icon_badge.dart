@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:svg_flutter/svg.dart';
 import 'package:tab_newz/constants/app_assets.dart';
-import 'package:tab_newz/theme/app_colors.dart';
 
 class IconBadge extends StatelessWidget {
   const IconBadge({
